@@ -1,20 +1,24 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
-import { getCommentPageStart } from 'store/reducers/getCommentList/getPageAction'
-
+import { getPageLimitStart } from 'store/reducers/getCommentList/getPageAction'
+import { deleteCommentStart } from 'store/reducers/deleteComment/deleteAction'
+import { putCommentStart } from 'store/reducers/putComment/putAction'
 function CommentList() {
   const dispatch = useDispatch()
   const { commentList, loading } = useSelector(state => state.commentList)
 
   useEffect(() => {
-    dispatch(getCommentPageStart())
+    dispatch(getPageLimitStart())
   }, [dispatch])
 
   const handleRewriteComment = commentID => {
     console.log(commentID)
   }
-  const handleDeleteComment = commentID => {}
+  const handleDeleteComment = commentID => {
+    dispatch(deleteCommentStart(commentID))
+    dispatch(getPageLimitStart(1))
+  }
   if (loading) return <div>로딩중...</div>
 
   return (

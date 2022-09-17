@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { postCommentStart } from 'store/reducers/postComment/postAction'
-import { getCommentPageStart } from 'store/reducers/getCommentList/getPageAction'
+import { getPageLimitStart } from 'store/reducers/getCommentList/getPageAction'
 import { useDispatch } from 'react-redux'
 
 const initialPostData = {
@@ -22,7 +22,7 @@ function Form() {
   const handlePostSubmit = e => {
     e.preventDefault()
     dispatch(postCommentStart(postData))
-    dispatch(getCommentPageStart(1))
+    dispatch(getPageLimitStart(1))
     setPostData(initialPostData)
   }
 

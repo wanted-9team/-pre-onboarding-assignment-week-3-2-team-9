@@ -1,18 +1,18 @@
-export const GET_COMMENT_PAGE_START = 'GET_COMMENT_PAGE_START'
-export const GET_COMMENT_PAGE_SUCCESS = 'GET_COMMENT_PAGE_SUCCESS'
-export const GET_COMMENT_PAGE_ERROR = 'GET_COMMENT_PAGE_ERROR'
+export const GET_PAGE_LIMIT_START = 'GET_PAGE_LIMIT_START'
+export const GET_PAGE_LIMIT_SUCCESS = 'GET_PAGE_LIMIT_SUCCESS'
+export const GET_PAGE_LIMIT_ERROR = 'GET_PAGE_LIMIT_ERROR'
 
-export const getCommentPageStart = payload => ({
-  type: GET_COMMENT_PAGE_START,
+export const getPageLimitStart = payload => ({
+  type: GET_PAGE_LIMIT_START,
   payload,
 })
 
-export const getCommentPageSuccess = payload => ({
-  type: GET_COMMENT_PAGE_SUCCESS,
+export const getPageLimitSuccess = payload => ({
+  type: GET_PAGE_LIMIT_SUCCESS,
   payload,
 })
 
-export const getCommentPageError = payload => ({
-  type: GET_COMMENT_PAGE_ERROR,
+export const getPageLimitError = payload => ({
+  type: GET_PAGE_LIMIT_ERROR,
   payload,
 })

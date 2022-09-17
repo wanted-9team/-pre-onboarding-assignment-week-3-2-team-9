@@ -8,9 +8,9 @@ import {
 } from 'store/reducers/getCommentList/getListAction'
 
 import {
-  getCommentPageSuccess,
-  getCommentPageError,
-  GET_COMMENT_PAGE_START,
+  getPageLimitSuccess,
+  getPageLimitError,
+  GET_PAGE_LIMIT_START,
 } from 'store/reducers/getCommentList/getPageAction'
 
 function* commentListSaga() {
@@ -26,13 +26,13 @@ function* commentPageSaga(action) {
   const { payload = 1 } = action
   try {
     const response = yield call(commentAPI.getPageLimit, payload)
-    yield put(getCommentPageSuccess({ response, payload }))
+    yield put(getPageLimitSuccess({ response, payload }))
   } catch (err) {
-    yield put(getCommentPageError(err))
+    yield put(getPageLimitError(err))
   }
 }
 
 export function* getCommentSaga() {
   yield takeEvery(GET_LIST_START, commentListSaga)
-  yield takeEvery(GET_COMMENT_PAGE_START, commentPageSaga)
+  yield takeEvery(GET_PAGE_LIMIT_START, commentPageSaga)
 }
