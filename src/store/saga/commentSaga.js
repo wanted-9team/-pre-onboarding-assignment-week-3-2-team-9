@@ -1,13 +1,17 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
 import * as commentAPI from '../../api'
+
 import {
   getCommentListSuccess,
   getCommentListError,
+  GET_LIST_START,
+} from 'store/reducers/commentList/getListAction'
+
+import {
   getCommentPageSuccess,
   getCommentPageError,
-  GET_COMMENT_START,
   GET_COMMENT_PAGE_START,
-} from 'store/reducers/commentReducer'
+} from 'store/reducers/commentList/getPageAction'
 
 export function* commentListSaga() {
   try {
@@ -29,6 +33,6 @@ export function* commentPageSaga(action) {
 }
 
 export function* commentSaga() {
-  yield takeEvery(GET_COMMENT_START, commentListSaga)
+  yield takeEvery(GET_LIST_START, commentListSaga)
   yield takeEvery(GET_COMMENT_PAGE_START, commentPageSaga)
 }

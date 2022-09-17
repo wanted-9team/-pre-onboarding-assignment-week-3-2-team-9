@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import { useSelector, useDispatch, shallowEqual } from 'react-redux'
-import { getCommentListStart, getCommentPageStart } from 'store/reducers/commentReducer'
+import { useSelector, useDispatch } from 'react-redux'
+import { getCommentListStart } from 'store/reducers/commentList/getListAction'
+import { getCommentPageStart } from 'store/reducers/commentList/getPageAction'
+
 function PageList() {
   const dispatch = useDispatch()
-  const { totalPages, currentPage } = useSelector(state => state.commentList, shallowEqual)
+  const { totalPages, currentPage } = useSelector(state => state.commentList)
 
   const pageArray = []
 
