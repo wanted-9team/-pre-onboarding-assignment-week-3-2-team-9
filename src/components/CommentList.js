@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
-import { getCommentPageStart } from 'store/reducers/commentList/getPageAction'
+import { getCommentPageStart } from 'store/reducers/getCommentList/getPageAction'
 
 function CommentList() {
   const dispatch = useDispatch()
