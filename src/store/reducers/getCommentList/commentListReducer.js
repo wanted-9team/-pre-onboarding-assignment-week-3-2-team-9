@@ -1,9 +1,5 @@
 import { GET_LIST_START, GET_LIST_SUCCESS, GET_LIST_ERROR } from './getListAction'
-import {
-  GET_COMMENT_PAGE_START,
-  GET_COMMENT_PAGE_SUCCESS,
-  GET_COMMENT_PAGE_ERROR,
-} from './getPageAction'
+import { GET_PAGE_LIMIT_START, GET_PAGE_LIMIT_SUCCESS, GET_PAGE_LIMIT_ERROR } from './getPageAction'
 
 const INITIAL_STATE = {
   loading: false,
@@ -34,20 +30,20 @@ export const commentListReducer = (state = INITIAL_STATE, { type, payload }) => 
         loading: false,
         error: payload,
       }
-    case GET_COMMENT_PAGE_START:
+    case GET_PAGE_LIMIT_START:
       return {
         ...state,
         loading: true,
         error: null,
       }
-    case GET_COMMENT_PAGE_SUCCESS:
+    case GET_PAGE_LIMIT_SUCCESS:
       return {
         ...state,
         loading: false,
         commentList: payload.response,
-        currentPage: payload.pageNumber,
+        currentPage: payload.payload,
       }
-    case GET_COMMENT_PAGE_ERROR:
+    case GET_PAGE_LIMIT_ERROR:
       return {
         ...state,
         loading: false,

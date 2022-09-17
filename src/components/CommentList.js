@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getPageLimitStart } from 'store/reducers/getCommentList/getPageAction'
 import { deleteCommentStart } from 'store/reducers/deleteComment/deleteAction'
 import { putCommentStart } from 'store/reducers/putComment/putAction'
+
 function CommentList() {
   const dispatch = useDispatch()
   const { commentList, loading } = useSelector(state => state.commentList)
@@ -13,11 +14,11 @@ function CommentList() {
   }, [dispatch])
 
   const handleRewriteComment = commentID => {
-    console.log(commentID)
+    dispatch(putCommentStart(commentID))
   }
   const handleDeleteComment = commentID => {
     dispatch(deleteCommentStart(commentID))
-    dispatch(getPageLimitStart(1))
+    dispatch(getPageLimitStart())
   }
   if (loading) return <div>로딩중...</div>
 

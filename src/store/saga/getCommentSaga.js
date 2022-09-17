@@ -22,7 +22,7 @@ function* commentListSaga() {
   }
 }
 
-function* commentPageSaga(action) {
+export function* PageLimitSaga(action) {
   const { payload = 1 } = action
   try {
     const response = yield call(commentAPI.getPageLimit, payload)
@@ -34,5 +34,5 @@ function* commentPageSaga(action) {
 
 export function* getCommentSaga() {
   yield takeEvery(GET_LIST_START, commentListSaga)
-  yield takeEvery(GET_PAGE_LIMIT_START, commentPageSaga)
+  yield takeEvery(GET_PAGE_LIMIT_START, PageLimitSaga)
 }

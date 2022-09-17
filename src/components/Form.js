@@ -14,6 +14,7 @@ const initialPostData = {
 function Form() {
   const [postData, setPostData] = useState(initialPostData)
   const dispatch = useDispatch()
+
   const handlePostData = ({ target }) => {
     const { name, value } = target
     setPostData(prev => ({ ...prev, [name]: value }))
@@ -22,7 +23,7 @@ function Form() {
   const handlePostSubmit = e => {
     e.preventDefault()
     dispatch(postCommentStart(postData))
-    dispatch(getPageLimitStart(1))
+    dispatch(getPageLimitStart())
     setPostData(initialPostData)
   }
 
