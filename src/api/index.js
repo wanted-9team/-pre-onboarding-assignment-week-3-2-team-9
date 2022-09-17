@@ -31,3 +31,19 @@ export const postComment = async data => {
   })
   return res.data
 }
+
+export const putComment = async commentID => {
+  const res = await Axios({
+    url: `/${commentID}`,
+    method: 'PUT',
+  })
+  return res.data
+}
+
+export const deleteComment = async commentID => {
+  const res = await Axios({
+    url: `/${commentID}`,
+    method: 'DELETE',
+  })
+  return res.data
+}
