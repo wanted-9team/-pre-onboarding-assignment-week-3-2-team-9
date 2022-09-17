@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { commentListReducer } from './commentList/commentListReducer'
+import { commentListReducer } from './getCommentList/commentListReducer'
 
 const rootReducer = combineReducers({
   commentList: commentListReducer,

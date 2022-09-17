@@ -153,6 +153,50 @@
       "author": "abc_22",
       "content": "주변에 React 개발자 있나요",
       "createdAt": "2022-03-22"
+    },
+    {
+      "id": 23
+    },
+    {
+      "id": 24
+    },
+    {
+      "type": "POST_COMMENT_START",
+      "data": {
+        "profile_url": "asdf",
+        "author": "asdf",
+        "content": "asdf",
+        "createdAt": "sdf"
+      },
+      "id": 25
+    },
+    {
+      "profile_url": "asdf",
+      "author": "123",
+      "content": "sdf",
+      "createdAt": "123",
+      "id": 26
+    },
+    {
+      "profile_url": "asdf",
+      "author": "asdf",
+      "content": "123",
+      "createdAt": "dsf",
+      "id": 27
+    },
+    {
+      "profile_url": "asd",
+      "author": "sdf",
+      "content": "sdf",
+      "createdAt": "sdf",
+      "id": 28
+    },
+    {
+      "profile_url": "asdf",
+      "author": "safd",
+      "content": "sfd",
+      "createdAt": "sdf",
+      "id": 29
     }
   ]
 }
