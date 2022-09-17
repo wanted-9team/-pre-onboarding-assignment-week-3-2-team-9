@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { useEffect } from 'react'
 import styled from 'styled-components'
 import { postCommentStart } from 'store/reducers/postComment/postAction'
+import { getCommentPageStart } from 'store/reducers/getCommentList/getPageAction'
 import { useDispatch } from 'react-redux'
+
 const initialPostData = {
   profile_url: '',
   author: '',
@@ -21,6 +22,8 @@ function Form() {
   const handlePostSubmit = e => {
     e.preventDefault()
     dispatch(postCommentStart(postData))
+    dispatch(getCommentPageStart(1))
+    setPostData(initialPostData)
   }
 
   return (
@@ -32,11 +35,24 @@ function Form() {
           placeholder="https://picsum.photos/id/1/50/50"
           required
           onChange={handlePostData}
+          value={postData.profile_url}
         />
         <br />
-        <input type="text" name="author" placeholder="작성자" onChange={handlePostData} />
+        <input
+          type="text"
+          name="author"
+          placeholder="작성자"
+          onChange={handlePostData}
+          value={postData.author}
+        />
         <br />
-        <textarea name="content" placeholder="내용" required onChange={handlePostData}></textarea>
+        <textarea
+          name="content"
+          placeholder="내용"
+          required
+          onChange={handlePostData}
+          value={postData.content}
+        ></textarea>
         <br />
         <input
           type="text"
@@ -44,6 +60,7 @@ function Form() {
           placeholder="2020-05-30"
           required
           onChange={handlePostData}
+          value={postData.createdAt}
         />
         <br />
         <button type="submit">등록</button>

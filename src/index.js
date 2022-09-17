@@ -14,9 +14,7 @@ root.render(
   <ThemeProvider theme={theme}>
     <Provider store={store}>
       <GlobalStyle />
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
+      <App />
     </Provider>
   </ThemeProvider>,
 )

@@ -7,9 +7,9 @@ import {
 } from 'store/reducers/postComment/postAction'
 
 function* postCommentSaga(action) {
-  const { data } = action
+  const { payload } = action
   try {
-    const response = yield call(commentAPI.postComment, data)
+    const response = yield call(commentAPI.postComment, payload)
     yield put(postCommentSuccess(response))
   } catch (err) {
     yield put(postCommentError(err))

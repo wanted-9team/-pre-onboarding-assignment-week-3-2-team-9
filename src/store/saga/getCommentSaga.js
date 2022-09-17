@@ -23,10 +23,10 @@ function* commentListSaga() {
 }
 
 function* commentPageSaga(action) {
-  const { pageNumber = 1 } = action
+  const { payload = 1 } = action
   try {
-    const response = yield call(commentAPI.getPageLimit, pageNumber)
-    yield put(getCommentPageSuccess({ response, pageNumber }))
+    const response = yield call(commentAPI.getPageLimit, payload)
+    yield put(getCommentPageSuccess({ response, payload }))
   } catch (err) {
     yield put(getCommentPageError(err))
   }

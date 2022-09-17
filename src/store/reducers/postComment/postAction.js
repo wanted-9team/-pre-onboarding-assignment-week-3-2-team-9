@@ -2,9 +2,9 @@ export const POST_COMMENT_START = 'POST_COMMENT_START' // 요청 시작
 export const POST_COMMENT_SUCCESS = 'POST_COMMENT_SUCCESS'
 export const POST_COMMENT_ERROR = 'POST_COMMENT_ERROR'
 
-export const postCommentStart = data => ({
+export const postCommentStart = payload => ({
   type: POST_COMMENT_START,
-  data,
+  payload,
 })
 
 export const postCommentSuccess = payload => ({

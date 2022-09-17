@@ -11,10 +11,10 @@ function CommentList() {
     dispatch(getCommentPageStart())
   }, [dispatch])
 
-  const handleRewrite = commentID => {
+  const handleRewriteComment = commentID => {
     console.log(commentID)
   }
-
+  const handleDeleteComment = commentID => {}
   if (loading) return <div>로딩중...</div>
 
   return (
@@ -26,8 +26,8 @@ function CommentList() {
         <CreatedAt>{comment.createdAt}</CreatedAt>
         <Content>{comment.content}</Content>
         <ButtonWrap>
-          <button onClick={() => handleRewrite(comment.id)}>수정</button>
-          <button>삭제</button>
+          <button onClick={() => handleRewriteComment(comment.id)}>수정</button>
+          <button onClick={() => handleDeleteComment(comment.id)}>삭제</button>
         </ButtonWrap>
 
         <hr />
