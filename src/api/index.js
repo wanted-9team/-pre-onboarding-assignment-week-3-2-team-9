@@ -12,13 +12,13 @@ export const reqeusetCommentList = async () => {
   return res.data
 }
 
-export const requestCommentsPageLimit = async (page = 1, limit = 4) => {
+export const requestCommentsPageLimit = async page => {
   const res = await Axios({
     url: '/comments',
     method: 'get',
     params: {
       _page: page,
-      _limit: limit,
+      _limit: 4,
       _order: 'desc',
       _sort: 'id',
     },

@@ -1,10 +1,43 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useEffect } from 'react'
+import styled from 'styled-components'
+import { useSelector, useDispatch, shallowEqual } from 'react-redux'
+import { getCommentListStart, getCommentPageStart } from 'store/reducers/commentReducer'
+function PageList() {
+  const dispatch = useDispatch()
+  const { totalPages, currentPage } = useSelector(state => state.commentList, shallowEqual)
+
+  const pageArray = []
+
+  if (totalPages) {
+    for (let i = 1; i <= totalPages; i++) {
+      pageArray.push(i)
+    }
+  }
+  useEffect(() => {
+    dispatch(getCommentListStart())
+  }, [dispatch])
+
+  const handlePage = pageNumber => {
+    dispatch(getCommentPageStart(pageNumber))
+  }
+
+  return (
+    <PageListStyle>
+      {pageArray.map(number => (
+        <Page key={number} onClick={() => handlePage(number)} active={number === currentPage}>
+          {number}
+        </Page>
+      ))}
+    </PageListStyle>
+  )
+}
+
+export default PageList
 
 const PageListStyle = styled.div`
   margin-bottom: 20px;
   text-align: center;
-`;
+`
 
 const Page = styled.button`
   padding: 0.375rem 0.75rem;
@@ -19,17 +52,4 @@ const Page = styled.button`
         color: #fff;
   `}
   margin-right: 3px;
-`;
-
-function PageList() {
-  const pageArray = [];
-
-  pageArray.push(
-    // 임시로 페이지 하나만 설정했습니다.
-    <Page key="1">1</Page>
-  );
-
-  return <PageListStyle>{pageArray}</PageListStyle>;
-}
-
-export default PageList;
+`
