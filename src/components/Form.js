@@ -1,30 +1,24 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { postCommentStart } from 'store/reducers/postComment/postAction'
 import { getPageLimitStart } from 'store/reducers/getCommentList/getPageAction'
-import { useDispatch } from 'react-redux'
-
-const initialPostData = {
-  profile_url: '',
-  author: '',
-  content: '',
-  createdAt: '',
-}
+import { useDispatch, useSelector } from 'react-redux'
+import { setFormAction, clearFormAction } from 'store/reducers/formReducer/formRedcuer'
 
 function Form() {
-  const [postData, setPostData] = useState(initialPostData)
   const dispatch = useDispatch()
+  const inputData = useSelector(state => state.formReducer)
 
   const handlePostData = ({ target }) => {
     const { name, value } = target
-    setPostData(prev => ({ ...prev, [name]: value }))
+    dispatch(setFormAction({ ...inputData, [name]: value }))
   }
 
   const handlePostSubmit = e => {
     e.preventDefault()
-    dispatch(postCommentStart(postData))
+    dispatch(postCommentStart(inputData))
     dispatch(getPageLimitStart())
-    setPostData(initialPostData)
+    dispatch(clearFormAction())
   }
 
   return (
@@ -36,7 +30,7 @@ function Form() {
           placeholder="https://picsum.photos/id/1/50/50"
           required
           onChange={handlePostData}
-          value={postData.profile_url}
+          value={inputData.profile_url}
         />
         <br />
         <input
@@ -44,7 +38,7 @@ function Form() {
           name="author"
           placeholder="작성자"
           onChange={handlePostData}
-          value={postData.author}
+          value={inputData.author}
         />
         <br />
         <textarea
@@ -52,7 +46,7 @@ function Form() {
           placeholder="내용"
           required
           onChange={handlePostData}
-          value={postData.content}
+          value={inputData.content}
         ></textarea>
         <br />
         <input
@@ -61,7 +55,7 @@ function Form() {
           placeholder="2020-05-30"
           required
           onChange={handlePostData}
-          value={postData.createdAt}
+          value={inputData.createdAt}
         />
         <br />
         <button type="submit">등록</button>
