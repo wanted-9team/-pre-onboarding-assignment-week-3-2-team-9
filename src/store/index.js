@@ -1,10 +1,18 @@
-import { applyMiddleware, createStore } from 'redux'
-import { composeWithDevTools } from 'redux-devtools-extension'
-import { createLogger } from 'redux-logger'
-import rootReducer from 'redux'
+import { configureStore } from '@reduxjs/toolkit'
+import comment from 'redux/slice/comment'
+import comments from 'redux/slice/comments'
+import createSagaMiddleware from '@redux-saga/core'
+import { rootSaga } from 'redux/sagas'
+import logger from 'redux-logger'
 
-const logger = createLogger()
+const sagaMiddleware = createSagaMiddleware()
 
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(logger)))
+const Store = configureStore({
+  reducer: { comment, comments },
+  middleware: [sagaMiddleware, logger],
+  devTools: process.env.NODE_ENV !== 'production',
+})
 
-export default store
+sagaMiddleware.run(rootSaga)
+
+export default Store

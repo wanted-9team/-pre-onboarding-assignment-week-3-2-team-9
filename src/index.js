@@ -6,7 +6,7 @@ import { ThemeProvider } from 'styled-components'
 import theme from 'styles/theme'
 import GlobalStyle from 'styles/GlobalStyle'
 import { Provider } from 'react-redux'
-import store from './store/index'
+import Store from 'store'
 
 const container = document.getElementById('root')
 const root = createRoot(container)
@@ -14,7 +14,7 @@ const root = createRoot(container)
 root.render(
   <ThemeProvider theme={theme}>
     <GlobalStyle />
-    <Provider store={store}>
+    <Provider store={Store}>
       <App />
     </Provider>
   </ThemeProvider>,
