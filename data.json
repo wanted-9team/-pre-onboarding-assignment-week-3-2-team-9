@@ -1,20 +1,6 @@
 {
   "comments": [
     {
-      "id": 1,
-      "profile_url": "https://picsum.photos/id/1/50/50",
-      "author": "abc_1",
-      "content": "UI 테스트는 어떻게 진행하나요",
-      "createdAt": "2022-03-01"
-    },
-    {
-      "id": 2,
-      "profile_url": "https://picsum.photos/id/2/50/50",
-      "author": "abc_2",
-      "content": "막히면 대답은 빨리 해주나요",
-      "createdAt": "2022-03-02"
-    },
-    {
       "id": 4,
       "profile_url": "https://picsum.photos/id/4/50/50",
       "author": "abc_4",
@@ -142,6 +128,7 @@
       "createdAt": "123"
     },
     {
+
       "id": 26,
 
       "author": "123",
@@ -170,6 +157,7 @@
       "profile_url": "123",
       "content": "3123123",
       "createdAt": "123123"
+
     }
   ]
 }

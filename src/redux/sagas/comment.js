@@ -56,6 +56,9 @@ export function* watchCommentsAsync() {
   yield takeEvery(GET_CURRENT_PAGE, getCurrentPageSaga)
   yield takeEvery(GET_COMMENT_BY_ID, getCommentByIdSaga)
   yield takeEvery(CREATE_COMMENT, createCommentSaga)
+  yield takeEvery(CREATE_COMMENT, getCommentsSaga)
   yield takeEvery(UPDATE_COMMENT_BY_ID, updateCommentSaga)
+  yield takeEvery(UPDATE_COMMENT_BY_ID, getCommentsSaga)
   yield takeEvery(DELETE_COMMENT_BY_ID, deleteCommentByIdSaga)
+  yield takeEvery(DELETE_COMMENT_BY_ID, getCommentsSaga)
 }
