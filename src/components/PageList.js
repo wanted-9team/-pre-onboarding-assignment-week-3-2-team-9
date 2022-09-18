@@ -31,7 +31,6 @@ function PageList({ currentPage, setCurrentPage, totalPages }) {
     dispatch({ type: GET_CURRENT_PAGE, currentPage })
   }, [currentPage, dispatch])
 
-
   const handlePrevPage = () => {
     if (currentPage === 1) return
     setCurrentPage(currentPage - 1)
@@ -45,7 +44,8 @@ function PageList({ currentPage, setCurrentPage, totalPages }) {
   return (
     <Pagination>
       <PageLi className={currentPage === 1 && `disabled`} onClick={handlePrevPage}>
-        <PaginationBtn>&laquo;</PaginationBtn>
+
+        <PaginationBtn disabled={currentPage === 1}>&laquo;</PaginationBtn>
 
       </PageLi>
       {slicePage().map(page => (
@@ -57,10 +57,8 @@ function PageList({ currentPage, setCurrentPage, totalPages }) {
           <PaginationBtn>{page}</PaginationBtn>
         </PageLi>
       ))}
-
       <PageLi className={currentPage === totalPages && `disabled`} onClick={handleNextPage}>
         <PaginationBtn disabled={currentPage === totalPages}>&raquo;</PaginationBtn>
-
       </PageLi>
     </Pagination>
   )
