@@ -1,20 +1,6 @@
 {
   "comments": [
     {
-      "id": 1,
-      "profile_url": "https://picsum.photos/id/1/50/50",
-      "author": "abc_1",
-      "content": "UI 테스트는 어떻게 진행하나요",
-      "createdAt": "2022-03-01"
-    },
-    {
-      "id": 2,
-      "profile_url": "https://picsum.photos/id/2/50/50",
-      "author": "abc_2",
-      "content": "막히면 대답은 빨리 해주나요",
-      "createdAt": "2022-03-02"
-    },
-    {
       "id": 4,
       "profile_url": "https://picsum.photos/id/4/50/50",
       "author": "abc_4",
@@ -134,39 +120,39 @@
       "createdAt": "2022-03-03"
     },
     {
-      "id": 25,
-      "author": "123",
-      "profile_url": "123",
-      "content": "123",
-      "createdAt": "123"
+      "id": 35,
+      "author": "bb",
+      "profile_url": "bbb",
+      "content": "bb",
+      "createdAt": "bbbbb"
     },
     {
-      "id": 26,
-      "author": "123",
-      "profile_url": "123",
-      "content": "123",
-      "createdAt": "123"
+      "id": 36,
+      "author": "asdf",
+      "profile_url": "adsf",
+      "content": "asdfa",
+      "createdAt": "asdfsf"
     },
     {
-      "id": 27,
-      "author": "123",
-      "profile_url": "123",
-      "content": "123",
-      "createdAt": "123"
+      "id": 37,
+      "author": "asfd",
+      "profile_url": "asdfasdf",
+      "content": "asdfasdf",
+      "createdAt": "asdfasdf"
     },
     {
-      "id": 28,
-      "author": "123",
-      "profile_url": "123",
-      "content": "123",
-      "createdAt": "123"
+      "id": 38,
+      "author": "새로작성",
+      "profile_url": "add",
+      "content": "새로작성",
+      "createdAt": "0922"
     },
     {
-      "id": 29,
-      "author": "12312",
-      "profile_url": "123",
-      "content": "3123123",
-      "createdAt": "123123"
+      "id": 39,
+      "author": "새로작성3",
+      "profile_url": "22",
+      "content": "작성3",
+      "createdAt": "작성3"
     }
   ]
 }
