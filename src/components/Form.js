@@ -1,5 +1,8 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import styled from 'styled-components'
+import { setCommentSlice } from 'redux/slice/comment'
+import { UPDATE_COMMENT_BY_ID, CREATE_COMMENT } from 'redux/type'
 
 const FormStyle = styled.div`
   & > form {
@@ -11,7 +14,7 @@ const FormStyle = styled.div`
     width: 98%;
     height: 50px;
   }
-  & > form > input[type="text"] {
+  & > form > input[type='text'] {
     padding: 5px 1%;
     width: 98%;
     margin-bottom: 10px;
@@ -22,29 +25,64 @@ const FormStyle = styled.div`
     border: 1px solid lightgray;
     cursor: pointer;
   }
-`;
+`
 
 function Form() {
+  const comment = useSelector(state => state.comment)
+  const dispatch = useDispatch()
+
+  const handleChange = e => {
+    const { value, name } = e.target
+    dispatch(setCommentSlice({ ...comment, [name]: value }))
+  }
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    const profileURL = `https://picsum.photos/id/${comment.profile_url}/50/50`
+    comment.id === 0
+      ? dispatch({ type: CREATE_COMMENT, comment: { ...comment, profile_url: profileURL } })
+      : dispatch({ type: UPDATE_COMMENT_BY_ID, comment: { ...comment, profile_url: profileURL } })
+
+    dispatch(setCommentSlice({ id: 0, author: '', profile_url: '', content: '', createdAt: '' }))
+  }
   return (
     <FormStyle>
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           name="profile_url"
-          placeholder="https://picsum.photos/id/1/50/50"
-          required
+          placeholder="사진 id"
+          onChange={handleChange}
+          value={comment?.profile_url}
         />
         <br />
-        <input type="text" name="author" placeholder="작성자" />
+        <input
+          type="text"
+          name="author"
+          placeholder="작성자"
+          onChange={handleChange}
+          value={comment?.author}
+        />
         <br />
-        <textarea name="content" placeholder="내용" required></textarea>
+        <textarea
+          name="content"
+          placeholder="내용"
+          onChange={handleChange}
+          value={comment?.content}
+        ></textarea>
         <br />
-        <input type="text" name="createdAt" placeholder="2020-05-30" required />
+        <input
+          type="text"
+          name="createdAt"
+          placeholder="2020-05-30"
+          onChange={handleChange}
+          value={comment?.createdAt}
+        />
         <br />
         <button type="submit">등록</button>
       </form>
     </FormStyle>
-  );
+  )
 }
 
-export default Form;
+export default Form

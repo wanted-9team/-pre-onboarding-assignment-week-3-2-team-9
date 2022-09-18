@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 
 const Comment = styled.div`
   padding: 7px 10px;
@@ -12,16 +12,16 @@ const Comment = styled.div`
     width: 50px;
     height: 50px;
   }
-`;
+`
 
 const CreatedAt = styled.div`
   float: right;
   vertical-align: middle;
-`;
+`
 
 const Content = styled.div`
   margin: 10px 0;
-`;
+`
 
 const Button = styled.div`
   text-align: right;
@@ -33,18 +33,18 @@ const Button = styled.div`
     border: 1px solid lightgray;
     cursor: pointer;
   }
-`;
+`
 
 // 임시 데이터 입니다. 코드 작성시 data 부분을 지워주세요
 const data = [
   {
     id: 1,
-    profile_url: "https://picsum.photos/id/1/50/50",
-    author: "abc_1",
-    content: "UI 테스트는 어떻게 진행하나요",
-    createdAt: "2020-05-01",
+    profile_url: 'https://picsum.photos/id/1/50/50',
+    author: 'abc_1',
+    content: 'UI 테스트는 어떻게 진행하나요',
+    createdAt: '2020-05-01',
   },
-];
+]
 
 function CommentList() {
   return data.map((comment, key) => (
@@ -64,7 +64,7 @@ function CommentList() {
 
       <hr />
     </Comment>
-  ));
+  ))
 }
 
-export default CommentList;
+export default CommentList
