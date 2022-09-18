@@ -1,55 +1,40 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
-
-const PageListStyle = styled.div`
-  margin-bottom: 20px;
-  text-align: center;
-`
-
-const Page = styled.button`
-  padding: 0.375rem 0.75rem;
-  border-radius: 0.25rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  border: 1px solid lightgray;
-  ${({ active }) =>
-    active &&
-    `
-        background: gray;
-        color: #fff;
-  `}
-  margin-right: 3px;
-`
-
-function PageList({ currentPage, setCurrentPage, totalPosts, pageLimit }) {
-  const totalPages = Math.ceil(totalPosts / pageLimit)
+import { useDispatch } from 'react-redux'
+import { GET_CURRENT_PAGE } from 'redux/type'
+function PageList({ currentPage, setCurrentPage, totalPages }) {
+  const dispatch = useDispatch()
   let pages = []
 
   for (let p = 1; p <= totalPages; p++) {
     pages.push(p)
   }
 
+  useEffect(() => {
+    dispatch({ type: GET_CURRENT_PAGE, payload: currentPage })
+  }, [currentPage])
+
   return (
     <Pagination>
-      <li className={`page-item ${currentPage === 1 && `disabled`}`}>
+      <PageLi className={`page-item ${currentPage === 1 && `disabled`}`}>
         <button className="page-link" onClick={() => setCurrentPage(currentPage - 1)}>
           &laquo;
         </button>
-      </li>
+      </PageLi>
       {pages.map(page => (
-        <li
+        <PageLi
           key={page}
           className={`page-item ${page === currentPage && `active`}`}
           onClick={() => setCurrentPage(page)}
         >
           <button className="page-link">{page}</button>
-        </li>
+        </PageLi>
       ))}
-      <li className={`page-item ${currentPage === totalPages && `disabled`}`}>
+      <PageLi className={`page-item ${currentPage === totalPages && `disabled`}`}>
         <button className="page-link" onClick={() => setCurrentPage(currentPage + 1)}>
           &raquo;
         </button>
-      </li>
+      </PageLi>
     </Pagination>
   )
 }
@@ -60,20 +45,22 @@ const Pagination = styled.ul`
   text-align: center;
   width: 100%;
   margin: 20px 0;
+`
 
-  & li {
-    display: inline-block;
-    text-align: right;
-    margin-left: 10px;
-    padding: 0.375rem 0.75rem;
-    border-radius: 0.25rem;
-    border: 1px solid lightgray;
-    cursor: pointer;
-  }
-
-  & li.active {
-    background: lightgray;
+const PageLi = styled.li`
+  display: inline-block;
+  text-align: right;
+  margin-left: 10px;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+  border: 1px solid lightgray;
+  cursor: pointer;
+  &.active {
+    background-color: lightgray;
     cursor: revert;
     transform: revert;
+  }
+  &.disabled {
+    background-color: lightgray;
   }
 `

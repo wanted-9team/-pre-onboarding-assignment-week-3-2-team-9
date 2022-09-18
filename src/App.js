@@ -7,10 +7,9 @@ function App() {
   const [currentPage, setCurrentPage] = useState(1)
   return (
     <CommentPageWrapper>
-      <CommentList currentPage={currentPage} setCurrentPage={setCurrentPage}  />
+      <CommentList currentPage={currentPage} setCurrentPage={setCurrentPage} />
       <Form setCurrentPage={setCurrentPage} currentPage={currentPage} />
     </CommentPageWrapper>
-
   )
 }
 
