@@ -8,8 +8,9 @@ import {
 
 function* putCommentSaga(action) {
   const { payload } = action
+
   try {
-    const response = yield call(commentAPI.putComment, payload)
+    const response = yield call(commentAPI.putComment, payload.id, payload)
     yield put(putCommentSuccess(response))
   } catch (err) {
     yield put(putCommentError(err))

@@ -142,24 +142,17 @@
     },
     {
       "id": 21,
-      "profile_url": "https://picsum.photos/id/21/50/50",
-      "author": "abc_21",
-      "content": "typescript도 배워 보려고 합니다. 어떻게 배우는게 빠를까요",
-      "createdAt": "2022-03-21"
+      "profile_url": "abcd",
+      "author": "aaccc",
+      "content": "aaaccc",
+      "createdAt": "aaccc"
     },
     {
       "id": 22,
-      "profile_url": "abcd",
-      "author": "abcd1234",
-      "content": "adf",
-      "createdAt": "22222"
-    },
-    {
-      "id": 23,
-      "profile_url": "abcd",
-      "author": "1234",
-      "content": "1234",
-      "createdAt": "1234"
+      "profile_url": "bb",
+      "author": "bb",
+      "content": "bbb",
+      "createdAt": "bbb"
     }
   ]
 }

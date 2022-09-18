@@ -4,7 +4,7 @@ import { postCommentStart } from 'store/reducers/postComment/postAction'
 import { getPageLimitStart } from 'store/reducers/getCommentList/getPageAction'
 import { useDispatch, useSelector } from 'react-redux'
 import { setFormAction, clearFormAction } from 'store/reducers/formReducer/formRedcuer'
-
+import { putCommentStart } from 'store/reducers/putComment/putAction'
 function Form() {
   const dispatch = useDispatch()
   const inputData = useSelector(state => state.formReducer)
@@ -16,7 +16,9 @@ function Form() {
 
   const handlePostSubmit = e => {
     e.preventDefault()
-    dispatch(postCommentStart(inputData))
+    if (inputData.id) dispatch(putCommentStart(inputData))
+    else dispatch(postCommentStart(inputData))
+
     dispatch(getPageLimitStart())
     dispatch(clearFormAction())
   }

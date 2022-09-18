@@ -3,8 +3,7 @@ import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
 import { getPageLimitStart } from 'store/reducers/getCommentList/getPageAction'
 import { deleteCommentStart } from 'store/reducers/deleteComment/deleteAction'
-import { putCommentStart } from 'store/reducers/putComment/putAction'
-
+import { setFormAction } from 'store/reducers/formReducer/formRedcuer'
 function CommentList() {
   const dispatch = useDispatch()
   const { commentList, loading } = useSelector(state => state.commentList)
@@ -13,9 +12,6 @@ function CommentList() {
     dispatch(getPageLimitStart())
   }, [dispatch])
 
-  const handleRewriteComment = commentID => {
-    dispatch(putCommentStart(commentID))
-  }
   const handleDeleteComment = commentID => {
     dispatch(deleteCommentStart(commentID))
     dispatch(getPageLimitStart())
@@ -31,7 +27,7 @@ function CommentList() {
         <CreatedAt>{comment.createdAt}</CreatedAt>
         <Content>{comment.content}</Content>
         <ButtonWrap>
-          <button onClick={() => handleRewriteComment(comment.id)}>수정</button>
+          <button onClick={() => dispatch(setFormAction(comment))}>수정</button>
           <button onClick={() => handleDeleteComment(comment.id)}>삭제</button>
         </ButtonWrap>
 

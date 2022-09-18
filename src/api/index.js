@@ -32,10 +32,11 @@ export const postComment = async data => {
   return res.data
 }
 
-export const putComment = async commentID => {
+export const putComment = async (commentID, data) => {
   const res = await Axios({
     url: `/${commentID}`,
     method: 'PUT',
+    data,
   })
   return res.data
 }
