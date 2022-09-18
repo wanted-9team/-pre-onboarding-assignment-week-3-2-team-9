@@ -7,14 +7,7 @@ const initialState = {
 export const postCommentReducuer = (state = initialState, { type, payload }) => {
   switch (type) {
     case POST_COMMENT_START:
-      return {
-        ...state,
-        error: null,
-      }
     case POST_COMMENT_SUCCESS:
-      return {
-        ...state,
-      }
     case POST_COMMENT_ERROR:
       return {
         ...state,

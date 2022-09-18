@@ -149,10 +149,17 @@
     },
     {
       "id": 22,
-      "profile_url": "https://picsum.photos/id/22/50/50",
-      "author": "abc_22",
-      "content": "주변에 React 개발자 있나요",
-      "createdAt": "2022-03-22"
+      "profile_url": "abcd",
+      "author": "abcd1234",
+      "content": "adf",
+      "createdAt": "22222"
+    },
+    {
+      "id": 23,
+      "profile_url": "abcd",
+      "author": "1234",
+      "content": "1234",
+      "createdAt": "1234"
     }
   ]
 }

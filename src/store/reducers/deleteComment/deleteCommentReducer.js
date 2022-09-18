@@ -7,14 +7,7 @@ const initialState = {
 export const deleteCommentReducuer = (state = initialState, { type, payload }) => {
   switch (type) {
     case DELETE_COMMENT_START:
-      return {
-        ...state,
-        error: null,
-      }
     case DELETE_COMMENT_SUCCESS:
-      return {
-        ...state,
-      }
     case DELETE_COMMENT_ERROR:
       return {
         ...state,
