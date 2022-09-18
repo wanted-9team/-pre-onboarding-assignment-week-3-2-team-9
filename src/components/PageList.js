@@ -44,7 +44,9 @@ function PageList({ currentPage, setCurrentPage, totalPages }) {
   return (
     <Pagination>
       <PageLi className={currentPage === 1 && `disabled`} onClick={handlePrevPage}>
+
         <PaginationBtn disabled={currentPage === 1}>&laquo;</PaginationBtn>
+
       </PageLi>
       {slicePage().map(page => (
         <PageLi
