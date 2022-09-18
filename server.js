@@ -1,8 +1,8 @@
-import jsonServer from 'json-server'
+import { create, router as _router, defaults, rewriter } from 'json-server'
 
-const server = jsonServer.create()
-const router = jsonServer.router('./data.json')
-const middlewares = jsonServer.defaults({
+const server = create()
+const router = _router('./data.json')
+const middlewares = defaults({
   static: './build',
 })
 
@@ -11,7 +11,7 @@ const port = process.env.PORT || 4000
 server.use(middlewares)
 
 server.use(
-  jsonServer.rewriter({
+  rewriter({
     '/api/*': '/$1',
   }),
 )
