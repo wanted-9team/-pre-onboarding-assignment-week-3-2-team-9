@@ -1,15 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import CommentList from 'components/CommentList'
 import Form from 'components/Form'
-import PageList from 'components/PageList'
 
 function App() {
+  const [currentPage, setCurrentPage] = useState(1)
   return (
     <CommentPageWrapper>
-      <CommentList />
-      <Form />
+      <CommentList currentPage={currentPage} setCurrentPage={setCurrentPage}  />
+      <Form setCurrentPage={setCurrentPage} currentPage={currentPage} />
     </CommentPageWrapper>
+
   )
 }
 

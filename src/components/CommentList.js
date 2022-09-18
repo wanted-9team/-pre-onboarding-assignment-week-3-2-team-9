@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
 import { DELETE_COMMENT_BY_ID, GET_COMMENTS } from 'redux/type'
@@ -6,10 +6,12 @@ import { setCommentSlice } from 'redux/slice/comment'
 import { pageOptions } from 'api'
 import PageList from './PageList'
 
-function CommentList() {
+
+
+function CommentList({ currentPage, setCurrentPage }) {
+
   const comments = useSelector(state => state.comments)
   const dispatch = useDispatch()
-  const [currentPage, setCurrentPage] = useState(1)
   const { pageLimit } = pageOptions
   const totalPosts = comments.length
   const indexOfLastPost = currentPage * pageLimit
@@ -32,12 +34,19 @@ function CommentList() {
 
           <Content>{comment.content}</Content>
 
+
           <ButtonWrapper>
-            <Button onClick={() => dispatch(setCommentSlice(comment))}>수정</Button>
-            <Button onClick={() => dispatch({ type: DELETE_COMMENT_BY_ID, id: comment.id })}>
-              삭제
-            </Button>
+          <Button onClick={() => dispatch(setCommentSlice(comment))}>수정</Button>
+          <Button
+            onClick={() => {
+              dispatch({ type: DELETE_COMMENT_BY_ID, id: comment.id })
+              setCurrentPage(1)
+            }}
+          >
+            삭제
+          </Button>
           </ButtonWrapper>
+
         </Comment>
       ))}
       {totalPosts > pageLimit && (
