@@ -111,48 +111,6 @@
       "author": "abc_20",
       "content": "Form 처리는 어떻게 하면 깔끔할까요",
       "createdAt": "2022-03-20"
-    },
-    {
-      "id": 23,
-      "author": "타입스크립트11",
-      "profile_url": "https://picsum.photos/id/78/50/50",
-      "content": "1561511",
-      "createdAt": "2022-03-03"
-    },
-    {
-      "id": 35,
-      "author": "bb",
-      "profile_url": "bbb",
-      "content": "bb",
-      "createdAt": "bbbbb"
-    },
-    {
-      "id": 36,
-      "author": "asdf",
-      "profile_url": "adsf",
-      "content": "asdfa",
-      "createdAt": "asdfsf"
-    },
-    {
-      "id": 37,
-      "author": "asfd",
-      "profile_url": "asdfasdf",
-      "content": "asdfasdf",
-      "createdAt": "asdfasdf"
-    },
-    {
-      "id": 38,
-      "author": "새로작성",
-      "profile_url": "add",
-      "content": "새로작성",
-      "createdAt": "0922"
-    },
-    {
-      "id": 39,
-      "author": "새로작성3",
-      "profile_url": "22",
-      "content": "작성3",
-      "createdAt": "작성3"
     }
   ]
 }

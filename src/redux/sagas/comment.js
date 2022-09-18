@@ -8,7 +8,7 @@ import {
 } from 'api'
 import { setCommentSlice } from 'redux/slice/comment'
 import { put, takeEvery, call } from 'redux-saga/effects'
-import { getCommentsSlice, getCurrentPageSlice } from 'redux/slice/comments'
+import { getCommentsSlice, getCurrentPageSlice, setErrorSlice } from 'redux/slice/comments'
 import {
   CREATE_COMMENT,
   DELETE_COMMENT_BY_ID,
@@ -19,36 +19,60 @@ import {
 } from 'redux/type'
 
 export function* getCommentsSaga() {
-  const comments = yield getCommentsAPI()
-  yield put(getCommentsSlice(comments.data))
+  try {
+    const comments = yield getCommentsAPI()
+    yield put(getCommentsSlice(comments.data))
+  } catch (err) {
+    yield put(setErrorSlice(err))
+  }
 }
 
 export function* getCurrentPageSaga(action) {
-  const currentPage = yield call(getCommentsByCurrentPageAPI, action.currentPage)
-  yield put(getCurrentPageSlice(currentPage.data))
+  try {
+    const currentPage = yield call(getCommentsByCurrentPageAPI, action.currentPage)
+    yield put(getCurrentPageSlice(currentPage.data))
+  } catch (err) {
+    yield put(setErrorSlice(err))
+  }
 }
 
 export function* getCommentByIdSaga(action) {
-  yield call(getCommentsByIdAPI, action.id)
-  yield put(setCommentSlice(action.id))
+  try {
+    yield call(getCommentsByIdAPI, action.id)
+    yield put(setCommentSlice(action.id))
+  } catch (err) {
+    yield put(setErrorSlice(err))
+  }
 }
 
 export function* createCommentSaga(action) {
-  yield call(createCommentAPI, action.comment)
-  const currentPage = yield call(getCommentsByCurrentPageAPI, action.currentPage)
-  yield put(getCurrentPageSlice(currentPage.data))
+  try {
+    yield call(createCommentAPI, action.comment)
+    const currentPage = yield call(getCommentsByCurrentPageAPI, action.currentPage)
+    yield put(getCurrentPageSlice(currentPage.data))
+  } catch (err) {
+    yield put(setErrorSlice(err))
+  }
 }
 
 export function* updateCommentSaga(action) {
-  yield call(updateCommentAPI, action.comment)
-  const currentPage = yield call(getCommentsByCurrentPageAPI, action.currentPage)
-  yield put(getCurrentPageSlice(currentPage.data))
+  try {
+    yield call(updateCommentAPI, action.comment)
+    const currentPage = yield call(getCommentsByCurrentPageAPI, action.currentPage)
+    yield put(getCurrentPageSlice(currentPage.data))
+  } catch (err) {
+    yield put(setErrorSlice(err))
+  }
 }
 
 export function* deleteCommentByIdSaga(action) {
-  yield call(deleteCommentAPI, action.id)
-  const currentPage = yield call(getCommentsByCurrentPageAPI, action.currentPage)
-  yield put(getCurrentPageSlice(currentPage.data))
+  try {
+    yield call(deleteCommentAPI, action.id)
+    const currentPage = yield call(getCommentsByCurrentPageAPI, action.currentPage)
+    yield put(getCurrentPageSlice(currentPage.data))
+  } catch (err) {
+    yield put(setErrorSlice(err))
+  }
 }
 
 export function* watchCommentsAsync() {
