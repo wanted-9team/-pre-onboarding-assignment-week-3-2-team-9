@@ -6,41 +6,10 @@ import { setCommentSlice } from 'redux/slice/comment'
 import { pageOptions } from 'api'
 import PageList from './PageList'
 
-const Comment = styled.div`
-  padding: 7px 10px;
-  text-align: left;
 
-  & > img {
-    vertical-align: middle;
-    margin-right: 10px;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-  }
-`
-
-const CreatedAt = styled.div`
-  float: right;
-  vertical-align: middle;
-`
-
-const Content = styled.div`
-  margin: 10px 0;
-`
-
-const Button = styled.div`
-  text-align: right;
-  margin: 10px 0;
-  & > a {
-    margin-right: 10px;
-    padding: 0.375rem 0.75rem;
-    border-radius: 0.25rem;
-    border: 1px solid lightgray;
-    cursor: pointer;
-  }
-`
 
 function CommentList({ currentPage, setCurrentPage }) {
+
   const comments = useSelector(state => state.comments)
   const dispatch = useDispatch()
   const { pageLimit } = pageOptions
@@ -54,7 +23,7 @@ function CommentList({ currentPage, setCurrentPage }) {
   }, [])
 
   return (
-    <>
+    <CommentListWrapper>
       {filterPosts.map((comment, key) => (
         <Comment key={key}>
           <img src={comment.profile_url} alt="" />
@@ -65,6 +34,8 @@ function CommentList({ currentPage, setCurrentPage }) {
 
           <Content>{comment.content}</Content>
 
+
+          <ButtonWrapper>
           <Button onClick={() => dispatch(setCommentSlice(comment))}>수정</Button>
           <Button
             onClick={() => {
@@ -74,8 +45,8 @@ function CommentList({ currentPage, setCurrentPage }) {
           >
             삭제
           </Button>
+          </ButtonWrapper>
 
-          <hr />
         </Comment>
       ))}
       {totalPosts > pageLimit && (
@@ -86,8 +57,49 @@ function CommentList({ currentPage, setCurrentPage }) {
           pageLimit={pageLimit}
         />
       )}
-    </>
+    </CommentListWrapper>
   )
 }
 
 export default CommentList
+
+const CommentListWrapper = styled.div``
+
+const Comment = styled.div`
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+
+  & > img {
+    vertical-align: middle;
+    margin-right: 10px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+  }
+`
+
+const CreatedAt = styled.div`
+  float: right;
+  vertical-align: middle;
+  line-height: 30px;
+  color: #777;
+`
+
+const Content = styled.div`
+  margin: 10px 0;
+`
+const ButtonWrapper = styled.div`
+  text-align: right;
+`
+
+const Button = styled.button`
+  text-align: right;
+  margin-left: 10px;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+  border: 1px solid lightgray;
+  cursor: pointer;
+  & > a {
+  }
+`
