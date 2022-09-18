@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch, shallowEqual } from 'react-redux'
 import { DELETE_COMMENT_BY_ID, GET_COMMENTS } from 'redux/type'
 import { setCommentSlice } from 'redux/slice/comment'
 import PageList from './PageList'
 
 function CommentList({ currentPage, setCurrentPage }) {
-  const { comments, totalPages } = useSelector(state => state.comments)
+  const { comments, totalPages } = useSelector(state => state.comments, shallowEqual)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch({ type: GET_COMMENTS })
-  }, [])
+  }, [dispatch])
 
   return (
     <CommentListWrapper>

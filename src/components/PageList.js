@@ -27,15 +27,16 @@ function PageList({ currentPage, setCurrentPage, totalPages }) {
   }
 
   useEffect(() => {
-    dispatch({ type: GET_CURRENT_PAGE, payload: currentPage })
-  }, [currentPage])
+    dispatch({ type: GET_CURRENT_PAGE, currentPage })
+  }, [currentPage, dispatch])
 
   return (
     <Pagination>
-      <PageLi className={`page-item ${currentPage === 1 && `disabled`}`}>
-        <button className="page-link" onClick={() => setCurrentPage(currentPage - 1)}>
-          &laquo;
-        </button>
+      <PageLi
+        className={`page-item ${currentPage === 1 && `disabled`}`}
+        onClick={() => setCurrentPage(currentPage - 1)}
+      >
+        <button className="page-link">&laquo;</button>
       </PageLi>
       {slicePage().map(page => (
         <PageLi
@@ -46,10 +47,11 @@ function PageList({ currentPage, setCurrentPage, totalPages }) {
           <button className="page-link">{page}</button>
         </PageLi>
       ))}
-      <PageLi className={`page-item ${currentPage === totalPages && `disabled`}`}>
-        <button className="page-link" onClick={() => setCurrentPage(currentPage + 1)}>
-          &raquo;
-        </button>
+      <PageLi
+        className={`page-item ${currentPage === totalPages && `disabled`}`}
+        onClick={() => setCurrentPage(currentPage + 1)}
+      >
+        <button className="page-link">&raquo;</button>
       </PageLi>
     </Pagination>
   )

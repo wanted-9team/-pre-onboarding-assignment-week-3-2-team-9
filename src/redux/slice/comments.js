@@ -17,27 +17,8 @@ const comments = createSlice({
       const { payload } = action
       state.comments = payload
     },
-    addCommentSlice: (state, action) => {
-      return [...state, action.payload]
-    },
-    editCommentSlice: (state, action) => {
-      state = state.map(comment =>
-        Number(comment.id) === Number(action.payload.id) ? action.payload : comment,
-      )
-      return state
-    },
-    deleteCommentSlice: (state, action) => {
-      state = state.filter(comment => comment.id !== action.payload)
-      return state
-    },
   },
 })
 
-export const {
-  getCommentsSlice,
-  addCommentSlice,
-  editCommentSlice,
-  deleteCommentSlice,
-  getCurrentPageSlice,
-} = comments.actions
+export const { getCommentsSlice, getCurrentPageSlice } = comments.actions
 export default comments.reducer
