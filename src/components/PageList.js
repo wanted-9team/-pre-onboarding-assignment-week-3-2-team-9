@@ -44,7 +44,7 @@ function PageList({ currentPage, setCurrentPage, totalPages }) {
   return (
     <Pagination>
       <PageLi className={currentPage === 1 && `disabled`} onClick={handlePrevPage}>
-        <button>&laquo;</button>
+        <PaginationBtn>&laquo;</PaginationBtn>
       </PageLi>
       {slicePage().map(page => (
         <PageLi
@@ -52,11 +52,11 @@ function PageList({ currentPage, setCurrentPage, totalPages }) {
           className={page === currentPage && `active`}
           onClick={() => setCurrentPage(page)}
         >
-          <button>{page}</button>
+          <PaginationBtn>{page}</PaginationBtn>
         </PageLi>
       ))}
       <PageLi className={currentPage === totalPages && `disabled`} onClick={handleNextPage}>
-        <button disabled={currentPage === totalPages}>&raquo;</button>
+        <PaginationBtn disabled={currentPage === totalPages}>&raquo;</PaginationBtn>
       </PageLi>
     </Pagination>
   )
@@ -88,3 +88,5 @@ const PageLi = styled.li`
     color: #ddd;
   }
 `
+
+const PaginationBtn = styled.button``
