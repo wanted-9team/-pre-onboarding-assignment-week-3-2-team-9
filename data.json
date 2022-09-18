@@ -124,14 +124,7 @@
       "profile_url": "https://picsum.photos/id/18/50/50",
       "author": "abc_18",
       "content": "local storage는 언제 사용하는게 좋나요.",
-      "createdAt": "2022-03-18"
-    },
-    {
-      "id": 19,
-      "profile_url": "https://picsum.photos/id/19/50/50",
-      "author": "abc_19",
-      "content": "막히면 대답은 빨리 해주나요",
-      "createdAt": "2022-03-19"
+      "createdAt": "2022-03-17"
     },
     {
       "id": 20,
@@ -148,18 +141,18 @@
       "createdAt": "2022-03-28"
     },
     {
-      "id": 23,
-      "author": "타입스크립트",
-      "profile_url": "https://picsum.photos/id/78/50/50",
-      "content": "15615",
-      "createdAt": "2022-03-03"
+      "id": 25,
+      "author": "하이",
+      "profile_url": "90",
+      "content": "안녕하세용",
+      "createdAt": "2021-05-06"
     },
     {
-      "id": 24,
-      "author": "www",
-      "profile_url": "https://picsum.photos/id/150/50/50",
-      "content": "wwwwwwwwwwww",
-      "createdAt": "2022-03-03"
+      "id": 26,
+      "author": "뚱이랍니다",
+      "profile_url": "https://picsum.photos/id/60/50/50",
+      "content": "ㅁㄴㅇㄻㄴㅇㄹ",
+      "createdAt": "2020-03-04"
     }
   ]
 }
