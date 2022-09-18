@@ -17,8 +17,7 @@ const comments = createSlice({
       return state
     },
     addCommentSlice: (state, action) => {
-      state.concat(action.payload)
-      return state
+      return [...state, action.payload]
     },
     editCommentSlice: (state, action) => {
       state = state.map(comment =>

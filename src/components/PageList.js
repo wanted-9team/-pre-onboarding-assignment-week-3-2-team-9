@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 
 const PageListStyle = styled.div`
   margin-bottom: 20px;
   text-align: center;
-`;
+`
 
 const Page = styled.button`
   padding: 0.375rem 0.75rem;
@@ -19,17 +19,43 @@ const Page = styled.button`
         color: #fff;
   `}
   margin-right: 3px;
-`;
+`
 
-function PageList() {
-  const pageArray = [];
+function PageList({ currentPage, setCurrentPage, totalPosts, pageLimit }) {
+  const totalPages = Math.ceil(totalPosts / pageLimit)
+  let pages = []
 
-  pageArray.push(
-    // 임시로 페이지 하나만 설정했습니다.
-    <Page key="1">1</Page>
-  );
+  for (let p = 1; p <= totalPages; p++) {
+    pages.push(p)
+  }
 
-  return <PageListStyle>{pageArray}</PageListStyle>;
+  return (
+    <Pagination>
+      <li className={`page-item ${currentPage === 1 && `disabled`}`}>
+        <button className="page-link" onClick={() => setCurrentPage(currentPage - 1)}>
+          &laquo;
+        </button>
+      </li>
+      {pages.map(page => (
+        <li
+          key={page}
+          className={`page-item ${page === currentPage && `active`}`}
+          onClick={() => setCurrentPage(page)}
+        >
+          <button className="page-link">{page}</button>
+        </li>
+      ))}
+      <li className={`page-item ${currentPage === totalPages && `disabled`}`}>
+        <button className="page-link" onClick={() => setCurrentPage(currentPage + 1)}>
+          &raquo;
+        </button>
+      </li>
+    </Pagination>
+  )
 }
 
-export default PageList;
+export default PageList
+
+const Pagination = styled.ul`
+  display: flex;
+`

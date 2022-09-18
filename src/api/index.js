@@ -2,7 +2,7 @@ import axios from 'axios'
 
 axios.defaults.baseURL = 'http://localhost:4000'
 
-const pageOptions = {
+export const pageOptions = {
   pageLimit: 5,
   order: 'desc',
   sort: 'id',

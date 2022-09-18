@@ -54,6 +54,7 @@ function Form() {
           placeholder="사진 id"
           onChange={handleChange}
           value={comment?.profile_url}
+          required
         />
         <br />
         <input
@@ -62,6 +63,7 @@ function Form() {
           placeholder="작성자"
           onChange={handleChange}
           value={comment?.author}
+          required
         />
         <br />
         <textarea
@@ -69,14 +71,16 @@ function Form() {
           placeholder="내용"
           onChange={handleChange}
           value={comment?.content}
+          required
         ></textarea>
         <br />
         <input
           type="text"
           name="createdAt"
-          placeholder="2020-05-30"
+          placeholder="등록일"
           onChange={handleChange}
           value={comment?.createdAt}
+          required
         />
         <br />
         <button type="submit">등록</button>
