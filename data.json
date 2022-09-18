@@ -15,16 +15,9 @@
       "createdAt": "2022-03-02"
     },
     {
-      "id": 3,
-      "profile_url": "https://picsum.photos/id/3/50/50",
-      "author": "abc_3",
-      "content": "코드에러가 발생했는데 어딘지 모르겠어요",
-      "createdAt": "2022-03-03"
-    },
-    {
       "id": 4,
       "profile_url": "https://picsum.photos/id/4/50/50",
-      "author": "abc_4",
+      "author": "abc_44",
       "content": "Javascript 기초가 부족한데 좋은 가이드 있나요",
       "createdAt": "2022-03-04"
     },
@@ -120,11 +113,11 @@
       "createdAt": "2022-03-17"
     },
     {
-      "id": 18,
-      "profile_url": "https://picsum.photos/id/18/50/50",
-      "author": "abc_18",
-      "content": "local storage는 언제 사용하는게 좋나요.",
-      "createdAt": "2022-03-17"
+      "id": 19,
+      "profile_url": "https://picsum.photos/id/19/50/50",
+      "author": "abc_19",
+      "content": "막히면 대답은 빨리 해주나요",
+      "createdAt": "2022-03-19"
     },
     {
       "id": 20,
@@ -134,25 +127,39 @@
       "createdAt": "2022-03-20"
     },
     {
-      "id": 21,
-      "profile_url": "https://picsum.photos/id/36/50/50",
-      "author": "abc_21",
-      "content": "typescript도 배워 보려고 합니다.",
-      "createdAt": "2022-03-28"
+      "id": 23,
+      "author": "타입스크립트11",
+      "profile_url": "https://picsum.photos/id/78/50/50",
+      "content": "1561511",
+      "createdAt": "2022-03-03"
     },
     {
-      "id": 25,
-      "author": "하이",
-      "profile_url": "90",
-      "content": "안녕하세용",
-      "createdAt": "2021-05-06"
+      "id": 28,
+      "author": "sdf",
+      "profile_url": "adf",
+      "content": "sfsd",
+      "createdAt": "sdfsdfsdff"
     },
     {
-      "id": 26,
-      "author": "뚱이랍니다",
-      "profile_url": "https://picsum.photos/id/60/50/50",
-      "content": "ㅁㄴㅇㄻㄴㅇㄹ",
-      "createdAt": "2020-03-04"
+      "id": 29,
+      "author": "12312",
+      "profile_url": "123",
+      "content": "3123123",
+      "createdAt": "123123"
+    },
+    {
+      "id": 30,
+      "author": "123",
+      "profile_url": "123",
+      "content": "123",
+      "createdAt": "1233"
+    },
+    {
+      "id": 32,
+      "author": "sdfㄴㅇㄹㄴㄹ",
+      "profile_url": "asf",
+      "content": "sdf",
+      "createdAt": "dsfsf"
     }
   ]
 }

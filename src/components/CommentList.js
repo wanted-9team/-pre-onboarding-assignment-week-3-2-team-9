@@ -3,20 +3,11 @@ import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
 import { DELETE_COMMENT_BY_ID, GET_COMMENTS } from 'redux/type'
 import { setCommentSlice } from 'redux/slice/comment'
-import { pageOptions } from 'api'
 import PageList from './PageList'
 
-
-
 function CommentList({ currentPage, setCurrentPage }) {
-
-  const comments = useSelector(state => state.comments)
+  const { comments, totalPages } = useSelector(state => state.comments)
   const dispatch = useDispatch()
-  const { pageLimit } = pageOptions
-  const totalPosts = comments.length
-  const indexOfLastPost = currentPage * pageLimit
-  const indexOfFirstPost = indexOfLastPost - pageLimit
-  const filterPosts = comments.slice(indexOfFirstPost, indexOfLastPost)
 
   useEffect(() => {
     dispatch({ type: GET_COMMENTS })
@@ -24,39 +15,27 @@ function CommentList({ currentPage, setCurrentPage }) {
 
   return (
     <CommentListWrapper>
-      {filterPosts.map((comment, key) => (
+      {comments.map((comment, key) => (
         <Comment key={key}>
           <img src={comment.profile_url} alt="" />
-
           {comment.author}
-
           <CreatedAt>{comment.createdAt}</CreatedAt>
-
           <Content>{comment.content}</Content>
-
-
           <ButtonWrapper>
-          <Button onClick={() => dispatch(setCommentSlice(comment))}>수정</Button>
-          <Button
-            onClick={() => {
-              dispatch({ type: DELETE_COMMENT_BY_ID, id: comment.id })
-              setCurrentPage(1)
-            }}
-          >
-            삭제
-          </Button>
+            <Button onClick={() => dispatch(setCommentSlice(comment))}>수정</Button>
+            <Button
+              onClick={() => {
+                dispatch({ type: DELETE_COMMENT_BY_ID, id: comment.id })
+                setCurrentPage(1)
+              }}
+            >
+              삭제
+            </Button>
           </ButtonWrapper>
-
         </Comment>
       ))}
-      {totalPosts > pageLimit && (
-        <PageList
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          totalPosts={totalPosts}
-          pageLimit={pageLimit}
-        />
-      )}
+
+      <PageList currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} />
     </CommentListWrapper>
   )
 }
