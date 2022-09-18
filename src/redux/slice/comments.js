@@ -1,20 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+const initialState = {
+  comments: [],
+  totalPages: null,
+}
+
 const comments = createSlice({
   name: 'comments',
-  initialState: [
-    {
-      id: 0,
-      author: '',
-      profile_url: '',
-      content: '',
-      createdAt: '',
-    },
-  ],
+  initialState,
   reducers: {
     getCommentsSlice: (state, action) => {
-      state = action.payload
-      return state
+      const { payload } = action
+      state.totalPages = Math.ceil(payload.length / 4)
+    },
+    getCurrentPageSlice: (state, action) => {
+      const { payload } = action
+      state.comments = payload
     },
     addCommentSlice: (state, action) => {
       return [...state, action.payload]
@@ -32,6 +33,11 @@ const comments = createSlice({
   },
 })
 
-export const { getCommentsSlice, addCommentSlice, editCommentSlice, deleteCommentSlice } =
-  comments.actions
+export const {
+  getCommentsSlice,
+  addCommentSlice,
+  editCommentSlice,
+  deleteCommentSlice,
+  getCurrentPageSlice,
+} = comments.actions
 export default comments.reducer

@@ -4,6 +4,7 @@ import {
   getCommentsAPI,
   getCommentsByIdAPI,
   updateCommentAPI,
+  getCommentsByCurrentPageAPI,
 } from 'api'
 import { setCommentSlice } from 'redux/slice/comment'
 import { put, takeEvery } from 'redux-saga/effects'
@@ -12,6 +13,7 @@ import {
   deleteCommentSlice,
   editCommentSlice,
   getCommentsSlice,
+  getCurrentPageSlice,
 } from 'redux/slice/comments'
 import {
   CREATE_COMMENT,
@@ -19,11 +21,18 @@ import {
   GET_COMMENTS,
   GET_COMMENT_BY_ID,
   UPDATE_COMMENT_BY_ID,
+  GET_CURRENT_PAGE,
 } from 'redux/type'
 
 export function* getCommentsSaga() {
   const comments = yield getCommentsAPI()
   yield put(getCommentsSlice(comments.data))
+}
+
+export function* getCurrentPageSaga(action) {
+  console.log(action.payload, 'saga')
+  const currentPage = yield getCommentsByCurrentPageAPI(action.payload)
+  yield put(getCurrentPageSlice(currentPage.data))
 }
 
 export function* getCommentByIdSaga(action) {
@@ -48,6 +57,7 @@ export function* deleteCommentByIdSaga(action) {
 
 export function* watchCommentsAsync() {
   yield takeEvery(GET_COMMENTS, getCommentsSaga)
+  yield takeEvery(GET_CURRENT_PAGE, getCurrentPageSaga)
   yield takeEvery(GET_COMMENT_BY_ID, getCommentByIdSaga)
   yield takeEvery(CREATE_COMMENT, createCommentSaga)
   yield takeEvery(UPDATE_COMMENT_BY_ID, updateCommentSaga)
