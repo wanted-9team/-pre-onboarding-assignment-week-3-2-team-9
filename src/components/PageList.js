@@ -12,13 +12,16 @@ function PageList({ currentPage, setCurrentPage, totalPages }) {
   }
 
   const slicePage = () => {
-    if (currentPage === 1) {
+    if (totalPages < 5) {
+      const slicePages = pages
+      return slicePages
+    } else if (totalPages >= 5 && currentPage === 1) {
       const slicePages = pages.slice(currentPage - 1, 5)
       return slicePages
-    } else if (currentPage < 3) {
+    } else if (totalPages >= 5 && currentPage < 3) {
       const slicePages = pages.slice(currentPage - 2, 5)
       return slicePages
-    } else if (currentPage + 2 >= totalPages) {
+    } else if (totalPages >= 5 && currentPage + 2 >= totalPages) {
       const slicePages = pages.slice(totalPages - 5, totalPages)
       return slicePages
     } else {
@@ -26,6 +29,7 @@ function PageList({ currentPage, setCurrentPage, totalPages }) {
       return slicePages
     }
   }
+  console.log(slicePage())
 
   useEffect(() => {
     dispatch({ type: GET_CURRENT_PAGE, currentPage })
@@ -44,9 +48,7 @@ function PageList({ currentPage, setCurrentPage, totalPages }) {
   return (
     <Pagination>
       <PageLi className={currentPage === 1 && `disabled`} onClick={handlePrevPage}>
-
         <PaginationBtn disabled={currentPage === 1}>&laquo;</PaginationBtn>
-
       </PageLi>
       {slicePage().map(page => (
         <PageLi
