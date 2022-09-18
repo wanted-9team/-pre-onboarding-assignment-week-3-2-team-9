@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://localhost:4000'
+axios.defaults.baseURL = 'http://pre-onboarding-09-sparkpet.herokuapp.com'
 
 export const pageOptions = {
   pageLimit: 4,
