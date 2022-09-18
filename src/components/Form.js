@@ -16,12 +16,17 @@ function Form({ setCurrentPage, currentPage }) {
   const handleSubmit = e => {
     e.preventDefault()
     const profileURL = `${comment.profile_url}`
-
     comment.id === 0
-      ? dispatch({ type: CREATE_COMMENT, comment: { ...comment, profile_url: profileURL } })
-      : dispatch({ type: UPDATE_COMMENT_BY_ID, comment: { ...comment, profile_url: profileURL } })
+      ? dispatch({
+          type: CREATE_COMMENT,
+          comment: { ...comment, profile_url: profileURL },
+        })
+      : dispatch({
+          type: UPDATE_COMMENT_BY_ID,
+          comment: { ...comment, profile_url: profileURL },
+          currentPage,
+        })
     const newPage = comment.id === 0 ? 1 : currentPage
-    console.log('newPage', newPage)
     setCurrentPage(newPage)
     dispatch(setCommentSlice({ id: 0, author: '', profile_url: '', content: '', createdAt: '' }))
   }

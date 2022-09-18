@@ -7,7 +7,7 @@ import {
   getCommentsByCurrentPageAPI,
 } from 'api'
 import { setCommentSlice } from 'redux/slice/comment'
-import { put, takeEvery } from 'redux-saga/effects'
+import { put, takeEvery, call } from 'redux-saga/effects'
 import {
   addCommentSlice,
   deleteCommentSlice,
@@ -30,8 +30,7 @@ export function* getCommentsSaga() {
 }
 
 export function* getCurrentPageSaga(action) {
-  console.log(action.payload, 'saga')
-  const currentPage = yield getCommentsByCurrentPageAPI(action.payload)
+  const currentPage = yield call(getCommentsByCurrentPageAPI, action.payload)
   yield put(getCurrentPageSlice(currentPage.data))
 }
 
@@ -46,8 +45,10 @@ export function* createCommentSaga(action) {
 }
 
 export function* updateCommentSaga(action) {
-  yield updateCommentAPI(action.comment)
-  yield put(editCommentSlice(action.comment))
+  console.log('saga', action)
+  yield call(updateCommentAPI, action.comment)
+  const currentPage = yield call(getCommentsByCurrentPageAPI, action.currentPage)
+  yield put(getCurrentPageSlice(currentPage.data))
 }
 
 export function* deleteCommentByIdSaga(action) {
