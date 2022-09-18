@@ -11,7 +11,7 @@ function CommentList({ currentPage, setCurrentPage }) {
 
   useEffect(() => {
     dispatch({ type: GET_COMMENTS })
-  }, [])
+  }, [dispatch])
 
   return (
     <CommentListWrapper>

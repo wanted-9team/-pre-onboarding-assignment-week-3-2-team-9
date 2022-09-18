@@ -134,11 +134,39 @@
       "createdAt": "2022-03-03"
     },
     {
+      "id": 24,
+      "author": "ㅁㄴㅇㄹ",
+      "profile_url": "ㅁㄴㅇㄹ",
+      "content": "ㄴㅁㅇㄹ",
+      "createdAt": "ㄴㅇㄹ"
+    },
+    {
+      "id": 25,
+      "author": "123",
+      "profile_url": "123",
+      "content": "123",
+      "createdAt": "123"
+    },
+    {
+      "id": 26,
+      "author": "123",
+      "profile_url": "123",
+      "content": "123",
+      "createdAt": "123"
+    },
+    {
+      "id": 27,
+      "author": "123",
+      "profile_url": "123",
+      "content": "123",
+      "createdAt": "123"
+    },
+    {
       "id": 28,
-      "author": "sdf",
-      "profile_url": "adf",
-      "content": "sfsd",
-      "createdAt": "sdfsdfsdff"
+      "author": "123",
+      "profile_url": "123",
+      "content": "123",
+      "createdAt": "123"
     },
     {
       "id": 29,
@@ -146,20 +174,6 @@
       "profile_url": "123",
       "content": "3123123",
       "createdAt": "123123"
-    },
-    {
-      "id": 30,
-      "author": "123",
-      "profile_url": "123",
-      "content": "123",
-      "createdAt": "1233"
-    },
-    {
-      "id": 32,
-      "author": "sdfㄴㅇㄹㄴㄹ2123333123123",
-      "profile_url": "asf",
-      "content": "sdf",
-      "createdAt": "dsfsf"
     }
   ]
 }

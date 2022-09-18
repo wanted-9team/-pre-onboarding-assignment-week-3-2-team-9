@@ -8,13 +8,7 @@ import {
 } from 'api'
 import { setCommentSlice } from 'redux/slice/comment'
 import { put, takeEvery, call } from 'redux-saga/effects'
-import {
-  addCommentSlice,
-  deleteCommentSlice,
-  editCommentSlice,
-  getCommentsSlice,
-  getCurrentPageSlice,
-} from 'redux/slice/comments'
+import { getCommentsSlice, getCurrentPageSlice } from 'redux/slice/comments'
 import {
   CREATE_COMMENT,
   DELETE_COMMENT_BY_ID,
@@ -30,30 +24,31 @@ export function* getCommentsSaga() {
 }
 
 export function* getCurrentPageSaga(action) {
-  const currentPage = yield call(getCommentsByCurrentPageAPI, action.payload)
+  const currentPage = yield call(getCommentsByCurrentPageAPI, action.currentPage)
   yield put(getCurrentPageSlice(currentPage.data))
 }
 
 export function* getCommentByIdSaga(action) {
-  yield getCommentsByIdAPI(action.id)
+  yield call(getCommentsByIdAPI, action.id)
   yield put(setCommentSlice(action.id))
 }
 
 export function* createCommentSaga(action) {
-  yield createCommentAPI(action.comment)
-  yield put(addCommentSlice(action.comment))
+  yield call(createCommentAPI, action.comment)
+  const currentPage = yield call(getCommentsByCurrentPageAPI, action.currentPage)
+  yield put(getCurrentPageSlice(currentPage.data))
 }
 
 export function* updateCommentSaga(action) {
-  console.log('saga', action)
   yield call(updateCommentAPI, action.comment)
   const currentPage = yield call(getCommentsByCurrentPageAPI, action.currentPage)
   yield put(getCurrentPageSlice(currentPage.data))
 }
 
 export function* deleteCommentByIdSaga(action) {
-  yield deleteCommentAPI(action.id)
-  yield put(deleteCommentSlice(action.id))
+  yield call(deleteCommentAPI, action.id)
+  const currentPage = yield call(getCommentsByCurrentPageAPI, action.currentPage)
+  yield put(getCurrentPageSlice(currentPage.data))
 }
 
 export function* watchCommentsAsync() {

@@ -27,8 +27,8 @@ function PageList({ currentPage, setCurrentPage, totalPages }) {
   }
 
   useEffect(() => {
-    dispatch({ type: GET_CURRENT_PAGE, payload: currentPage })
-  }, [currentPage])
+    dispatch({ type: GET_CURRENT_PAGE, currentPage })
+  }, [currentPage, dispatch])
 
   return (
     <Pagination>
