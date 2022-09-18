@@ -10,6 +10,22 @@ function PageList({ currentPage, setCurrentPage, totalPages }) {
     pages.push(p)
   }
 
+  const slicePage = () => {
+    if (currentPage === 1) {
+      const slicePages = pages.slice(currentPage - 1, 5)
+      return slicePages
+    } else if (currentPage < 3) {
+      const slicePages = pages.slice(currentPage - 2, 5)
+      return slicePages
+    } else if (currentPage + 2 >= totalPages) {
+      const slicePages = pages.slice(totalPages - 5, totalPages)
+      return slicePages
+    } else {
+      const slicePages = pages.slice(currentPage - 3, currentPage + 2)
+      return slicePages
+    }
+  }
+
   useEffect(() => {
     dispatch({ type: GET_CURRENT_PAGE, payload: currentPage })
   }, [currentPage])
@@ -21,7 +37,7 @@ function PageList({ currentPage, setCurrentPage, totalPages }) {
           &laquo;
         </button>
       </PageLi>
-      {pages.map(page => (
+      {slicePage().map(page => (
         <PageLi
           key={page}
           className={`page-item ${page === currentPage && `active`}`}
