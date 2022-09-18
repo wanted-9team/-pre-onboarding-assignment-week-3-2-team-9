@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { useDispatch } from 'react-redux'
 import { GET_CURRENT_PAGE } from 'redux/type'
+
 function PageList({ currentPage, setCurrentPage, totalPages }) {
   const dispatch = useDispatch()
   let pages = []
@@ -30,28 +31,36 @@ function PageList({ currentPage, setCurrentPage, totalPages }) {
     dispatch({ type: GET_CURRENT_PAGE, currentPage })
   }, [currentPage, dispatch])
 
+
+  const handlePrevPage = () => {
+    if (currentPage === 1) return
+    setCurrentPage(currentPage - 1)
+  }
+
+  const handleNextPage = () => {
+    if (currentPage === totalPages) return
+    setCurrentPage(currentPage + 1)
+  }
+
   return (
     <Pagination>
-      <PageLi
-        className={`page-item ${currentPage === 1 && `disabled`}`}
-        onClick={() => setCurrentPage(currentPage - 1)}
-      >
-        <button className="page-link">&laquo;</button>
+      <PageLi className={currentPage === 1 && `disabled`} onClick={handlePrevPage}>
+        <PaginationBtn>&laquo;</PaginationBtn>
+
       </PageLi>
       {slicePage().map(page => (
         <PageLi
           key={page}
-          className={`page-item ${page === currentPage && `active`}`}
+          className={page === currentPage && `active`}
           onClick={() => setCurrentPage(page)}
         >
-          <button className="page-link">{page}</button>
+          <PaginationBtn>{page}</PaginationBtn>
         </PageLi>
       ))}
-      <PageLi
-        className={`page-item ${currentPage === totalPages && `disabled`}`}
-        onClick={() => setCurrentPage(currentPage + 1)}
-      >
-        <button className="page-link">&raquo;</button>
+
+      <PageLi className={currentPage === totalPages && `disabled`} onClick={handleNextPage}>
+        <PaginationBtn disabled={currentPage === totalPages}>&raquo;</PaginationBtn>
+
       </PageLi>
     </Pagination>
   )
@@ -80,5 +89,8 @@ const PageLi = styled.li`
   }
   &.disabled {
     background-color: lightgray;
+    color: #ddd;
   }
 `
+
+const PaginationBtn = styled.button``
