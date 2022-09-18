@@ -23,4 +23,5 @@ const comments = createSlice({
 })
 
 export const { getCommentsSlice, getCurrentPageSlice, setErrorSlice } = comments.actions
+
 export default comments.reducer
