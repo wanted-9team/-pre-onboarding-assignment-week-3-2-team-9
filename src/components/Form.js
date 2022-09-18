@@ -27,7 +27,7 @@ const FormStyle = styled.div`
   }
 `
 
-function Form() {
+function Form({ setCurrentPage, currentPage }) {
   const comment = useSelector(state => state.comment)
   const dispatch = useDispatch()
 
@@ -39,10 +39,13 @@ function Form() {
   const handleSubmit = e => {
     e.preventDefault()
     const profileURL = `${comment.profile_url}`
+
     comment.id === 0
       ? dispatch({ type: CREATE_COMMENT, comment: { ...comment, profile_url: profileURL } })
       : dispatch({ type: UPDATE_COMMENT_BY_ID, comment: { ...comment, profile_url: profileURL } })
-
+    const newPage = comment.id === 0 ? 1 : currentPage
+    console.log('newPage', newPage)
+    setCurrentPage(newPage)
     dispatch(setCommentSlice({ id: 0, author: '', profile_url: '', content: '', createdAt: '' }))
   }
   return (
@@ -51,7 +54,7 @@ function Form() {
         <input
           type="text"
           name="profile_url"
-          placeholder="사진 id"
+          placeholder="https://picsum.photos/id/1/50/50"
           onChange={handleChange}
           value={comment?.profile_url}
           required
