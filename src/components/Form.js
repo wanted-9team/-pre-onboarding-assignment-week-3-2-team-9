@@ -38,7 +38,7 @@ function Form() {
 
   const handleSubmit = e => {
     e.preventDefault()
-    const profileURL = `https://picsum.photos/id/${comment.profile_url}/50/50`
+    const profileURL = `${comment.profile_url}`
     comment.id === 0
       ? dispatch({ type: CREATE_COMMENT, comment: { ...comment, profile_url: profileURL } })
       : dispatch({ type: UPDATE_COMMENT_BY_ID, comment: { ...comment, profile_url: profileURL } })
