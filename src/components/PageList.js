@@ -57,5 +57,23 @@ function PageList({ currentPage, setCurrentPage, totalPosts, pageLimit }) {
 export default PageList
 
 const Pagination = styled.ul`
-  display: flex;
+  text-align: center;
+  width: 100%;
+  margin: 20px 0;
+
+  & li {
+    display: inline-block;
+    text-align: right;
+    margin-left: 10px;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.25rem;
+    border: 1px solid lightgray;
+    cursor: pointer;
+  }
+
+  & li.active {
+    background: lightgray;
+    cursor: revert;
+    transform: revert;
+  }
 `

@@ -4,29 +4,6 @@ import styled from 'styled-components'
 import { setCommentSlice } from 'redux/slice/comment'
 import { UPDATE_COMMENT_BY_ID, CREATE_COMMENT } from 'redux/type'
 
-const FormStyle = styled.div`
-  & > form {
-    padding: 0 10px;
-    margin-bottom: 50px;
-  }
-  & > form > textarea {
-    padding: 5px 1%;
-    width: 98%;
-    height: 50px;
-  }
-  & > form > input[type='text'] {
-    padding: 5px 1%;
-    width: 98%;
-    margin-bottom: 10px;
-  }
-  & > form > button {
-    padding: 0.375rem 0.75rem;
-    border-radius: 0.25rem;
-    border: 1px solid lightgray;
-    cursor: pointer;
-  }
-`
-
 function Form() {
   const comment = useSelector(state => state.comment)
   const dispatch = useDispatch()
@@ -56,7 +33,6 @@ function Form() {
           value={comment?.profile_url}
           required
         />
-        <br />
         <input
           type="text"
           name="author"
@@ -65,7 +41,6 @@ function Form() {
           value={comment?.author}
           required
         />
-        <br />
         <textarea
           name="content"
           placeholder="내용"
@@ -73,7 +48,6 @@ function Form() {
           value={comment?.content}
           required
         ></textarea>
-        <br />
         <input
           type="text"
           name="createdAt"
@@ -82,7 +56,6 @@ function Form() {
           value={comment?.createdAt}
           required
         />
-        <br />
         <button type="submit">등록</button>
       </form>
     </FormStyle>
@@ -90,3 +63,35 @@ function Form() {
 }
 
 export default Form
+
+const FormStyle = styled.div`
+  & > form {
+    padding: 0 10px;
+    margin-bottom: 50px;
+  }
+  & > form > textarea {
+    padding: 5px 1%;
+    width: 98%;
+    height: 70px;
+    margin-bottom: 5px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+  }
+  & > form > input[type='text'] {
+    padding: 5px 1%;
+    width: 98%;
+    margin-bottom: 5px;
+    height: 35px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+  }
+  & > form > button {
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    background-color: #333;
+    color: white;
+  }
+`
