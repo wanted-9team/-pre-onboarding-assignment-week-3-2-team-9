@@ -1,9 +1,54 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useEffect } from 'react'
+import styled from 'styled-components'
+import { useSelector, useDispatch, shallowEqual } from 'react-redux'
+import { DELETE_COMMENT_BY_ID, GET_COMMENTS } from 'redux/type'
+import { setCommentSlice } from 'redux/slice/comment'
+import PageList from './PageList'
+
+function CommentList({ currentPage, setCurrentPage }) {
+  const { comments, totalPages } = useSelector(state => state.comments, shallowEqual)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch({ type: GET_COMMENTS })
+  }, [dispatch])
+
+  const handleDeleteComment = id => {
+    const confirmMessage = window.confirm('정말 삭제 하시겠습니까?')
+    if (confirmMessage) {
+      dispatch({ type: DELETE_COMMENT_BY_ID, id })
+      setCurrentPage(1)
+    }
+  }
+
+  return (
+    <CommentListWrapper>
+      {comments.map((comment, key) => (
+        <Comment key={key}>
+          <img src={comment.profile_url} alt="" />
+          {comment.author}
+          <CreatedAt>{comment.createdAt}</CreatedAt>
+          <Content>{comment.content}</Content>
+          <ButtonWrapper>
+            <Button onClick={() => dispatch(setCommentSlice(comment))}>수정</Button>
+            <Button onClick={() => handleDeleteComment(comment.id)}>삭제</Button>
+          </ButtonWrapper>
+        </Comment>
+      ))}
+
+      <PageList currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} />
+    </CommentListWrapper>
+  )
+}
+
+export default CommentList
+
+const CommentListWrapper = styled.div``
 
 const Comment = styled.div`
-  padding: 7px 10px;
+  padding: 15px;
   text-align: left;
+  border-bottom: 1px solid #ddd;
 
   & > img {
     vertical-align: middle;
@@ -12,59 +57,29 @@ const Comment = styled.div`
     width: 50px;
     height: 50px;
   }
-`;
+`
 
 const CreatedAt = styled.div`
   float: right;
   vertical-align: middle;
-`;
+  line-height: 30px;
+  color: #777;
+`
 
 const Content = styled.div`
   margin: 10px 0;
-`;
-
-const Button = styled.div`
+`
+const ButtonWrapper = styled.div`
   text-align: right;
-  margin: 10px 0;
+`
+
+const Button = styled.button`
+  text-align: right;
+  margin-left: 10px;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+  border: 1px solid lightgray;
+  cursor: pointer;
   & > a {
-    margin-right: 10px;
-    padding: 0.375rem 0.75rem;
-    border-radius: 0.25rem;
-    border: 1px solid lightgray;
-    cursor: pointer;
   }
-`;
-
-// 임시 데이터 입니다. 코드 작성시 data 부분을 지워주세요
-const data = [
-  {
-    id: 1,
-    profile_url: "https://picsum.photos/id/1/50/50",
-    author: "abc_1",
-    content: "UI 테스트는 어떻게 진행하나요",
-    createdAt: "2020-05-01",
-  },
-];
-
-function CommentList() {
-  return data.map((comment, key) => (
-    <Comment key={key}>
-      <img src={comment.profile_url} alt="" />
-
-      {comment.author}
-
-      <CreatedAt>{comment.createdAt}</CreatedAt>
-
-      <Content>{comment.content}</Content>
-
-      <Button>
-        <a>수정</a>
-        <a>삭제</a>
-      </Button>
-
-      <hr />
-    </Comment>
-  ));
-}
-
-export default CommentList;
+`
