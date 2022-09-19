@@ -6,60 +6,87 @@
 | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ---------------------------------------------------------------- |
 | <a href="https://github.com/many-yun">[팀장] 김다윤</a>           | <a href="https://github.com/blcklamb">김채정</a>                  | <a href="https://github.com/jaehyeon74">박재현</a>                | <a href="https://github.com/sacultang">오영재</a>                 | <a href="https://github.com/jungdeokwoo">정덕우</a>              |
 
-## 목표
+## 과제 소개
 
 - API 서버와 통신해서 작동하는 댓글 프로젝트를 Redux를 통해 구현
+- 작업기간: 2022.09.16 ~ 2022.09.19
 
-## 참고자료
+## ⚙️ 설치 및 실행
 
-- API 참고사항
+```bash
+#프로젝트 클론 및 패키지 설치
+> git clone https://github.com/wanted-9team/pre-onboarding-assignment-week-3-2-team-9.git
+> cd pre-onboarding-assignment-week-3-2-team-9
+> npm install
 
-  - 프로젝트내에서 `npm install` 후, `npm run api` 실행 시 `[localhost:4000](http://localhost:4000)` 에 API 서버 실행
-  - [http://localhost:4000/comments](http://localhost:4000/comments)에 `GET` 요청시 `data.json` 파일에 기록된 데이터 확인 가능
-  - API 를 통해 입력하거나 수정하면 data.json 파일내용도 변경됨
-  - 총 댓글수는 `/comments` API로 호출 후 응답값을 통해서 직접 계산.
-  - 서버는 json-server 라이브러리 이용해서 구축됨
+#실행
+> npm run start
 
-    - API 사용법에 대한 추가정보는 공식문서 참고: [https://www.npmjs.com/package/json-server](https://www.npmjs.com/package/json-server)
+# 서버 실행
+> npm run api
+```
 
-      | method | url                   |
-      | ------ | --------------------- |
-      | GET    | /comments             |
-      | GET    | /comments/{commentId} |
-      | POST   | /comments             |
-      | PUT    | /comments/{commentId} |
-      | DELETE | /comments/{commentId} |
+## 영상
 
-  - API 호출 예시:
-    - 한페이지에 4개의 게시물이 보이고, 최근 게시물부터 정렬해서 3페이지를 보고 싶은 경우
-    - GET `/comments?_page=3&_limit=4&_order=desc&_sort=id`
+## 구현 기능
 
-## 과제 범위
+- [x] 예시 이미지와 같이 댓글 불러오기, 작성, 수정, 삭제가 동작하도록 기능 구현
+- [x] 페이지네이션 구현
+  - 페이지 전체를 보여주는 게 아닌 페이지를 5개씩 끊어서 UI에 반영
+- [x] 댓글 작성, 수정, 삭제 후 동작
+  - [x] 댓글 작성하고 난 뒤: 다른 페이지에 위치하고 있었더라도 1페이지로 이동, 입력 폼 초기화
+  - [x] 댓글 수정하고 난 뒤: 현재 보고있는 페이지 유지, 입력 폼 초기화
+  - [x] 삭제하고 난 뒤: 1페이지로 이동
 
-1. 예시 이미지와 같이 댓글 불러오기, 작성, 수정, 삭제가 동작하도록 기능 구현
+### 요구 사항
 
-   ![https://user-images.githubusercontent.com/12206933/83601436-8e15b780-a5ab-11ea-91ad-04a302579c90.gif](https://user-images.githubusercontent.com/12206933/83601436-8e15b780-a5ab-11ea-91ad-04a302579c90.gif)
+- [x] Redux 환경설정은 자유롭게 진행
+  - Redux-thunk로 구현
+- [x] Redux logger, Redux-Devtools 설정 필수
+  - devtools는 Redux toolkit에 이미 깔려있어서 그대로 사용
+- [x] Redux를 이용한 비동기 처리 필수
 
-2. 페이지네이션
-3. 댓글 작성, 수정, 삭제 후 동작
-   - 댓글 작성하고 난 뒤: 다른 페이지에 위치하고 있었더라도 1페이지로 이동, 입력 폼 초기화
-   - 댓글 수정하고 난 뒤: 현재 보고있는 페이지 유지, 입력 폼 초기화
-   - 삭제하고 난 뒤: 1페이지로 이동
+## 기술 스택
 
-## 요구 사항
+<div>
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white"/>
+<img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=redux&logoColor=white"/>
+<img src="https://img.shields.io/badge/Redux saga-999999?style=for-the-badge&logo=reduxsaga&logoColor=white"/>
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white"/>
+<img src="https://img.shields.io/badge/styled components-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white"/>
+</div>
 
-- Redux 환경설정은 자유롭게 진행
-  - Redux-saga or Redux-thunk 자유롭게 선택 가능
-  - 미들웨어 사용안하는 것도 가능
-- Redux logger, Redux-Devtools 설정 필수
-- Redux를 이용한 비동기 처리 필수
+## 파일구조
 
-## 개발 조건 및 환경
-
-- 언어 : JavaScript / TypeScript
-- 필수 기술: React, Redux, Redux-Logger, Redux-Devtools
-- 선택 기술:
-  - Redux Middleware
-  - 스타일 관련 라이브러리(styled-components, emotion, ui kit 등)
-  - HTTP Client(axios 등)
-- 위에 기재된 라이브러리 외 사용 불가
+```bash
+│  App.js
+│  index.js
+│  reportWebVitals.js
+│
+├─api
+│      index.js
+│
+├─components
+│      CommentList.js
+│      Form.js
+│      PageList.js
+│
+├─redux
+│  ├─sagas
+│  │      comment.js
+│  │      index.js
+│  │
+│  ├─slice
+│  │      comment.js
+│  │      comments.js
+│  │
+│  └─type
+│          index.js
+│
+├─store
+│      index.js
+│
+└─styles
+        GlobalStyle.js
+        theme.js
+```
