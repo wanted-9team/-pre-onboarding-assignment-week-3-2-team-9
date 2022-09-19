@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import { setCommentSlice } from 'redux/slice/comment'
-import { UPDATE_COMMENT_BY_ID, CREATE_COMMENT, GET_COMMENTS } from 'redux/type'
+import { UPDATE_COMMENT_BY_ID, CREATE_COMMENT } from 'redux/type'
 
 function Form({ setCurrentPage, currentPage }) {
   const comment = useSelector(state => state.comment)
