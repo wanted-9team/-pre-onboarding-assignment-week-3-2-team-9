@@ -26,7 +26,13 @@
 > npm run api
 ```
 
-## 영상
+## 데모
+- 댓글 등록<br><br>
+![11d634b6b3f07346](https://user-images.githubusercontent.com/92010078/190940762-67d1cc51-6fc3-400b-b9e2-193341d47796.gif)
+
+- 댓글 수정 및 삭제, 페이지네이션<br><br>
+![1365530a45e3fbbc](https://user-images.githubusercontent.com/92010078/190940835-6607b1e8-3c3f-405e-b9ba-6acbd6068f8b.gif)
+
 
 ## 구현 기능
 
