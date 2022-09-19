@@ -13,6 +13,14 @@ function CommentList({ currentPage, setCurrentPage }) {
     dispatch({ type: GET_COMMENTS })
   }, [dispatch])
 
+  const handleDeleteComment = id => {
+    const confirmMessage = window.confirm('정말 삭제 하시겠습니까?')
+    if (confirmMessage) {
+      dispatch({ type: DELETE_COMMENT_BY_ID, id })
+      setCurrentPage(1)
+    }
+  }
+
   return (
     <CommentListWrapper>
       {comments.map((comment, key) => (
@@ -23,14 +31,7 @@ function CommentList({ currentPage, setCurrentPage }) {
           <Content>{comment.content}</Content>
           <ButtonWrapper>
             <Button onClick={() => dispatch(setCommentSlice(comment))}>수정</Button>
-            <Button
-              onClick={() => {
-                dispatch({ type: DELETE_COMMENT_BY_ID, id: comment.id })
-                setCurrentPage(1)
-              }}
-            >
-              삭제
-            </Button>
+            <Button onClick={() => handleDeleteComment(comment.id)}>삭제</Button>
           </ButtonWrapper>
         </Comment>
       ))}

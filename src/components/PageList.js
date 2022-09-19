@@ -29,7 +29,6 @@ function PageList({ currentPage, setCurrentPage, totalPages }) {
       return slicePages
     }
   }
-  console.log(slicePage())
 
   useEffect(() => {
     dispatch({ type: GET_CURRENT_PAGE, currentPage })
