@@ -7,7 +7,8 @@ import {
   getCommentsByCurrentPageAPI,
 } from 'api'
 import { setCommentSlice } from 'redux/slice/comment'
-import { put, takeEvery, call } from 'redux-saga/effects'
+import { put, takeEvery, call, delay } from 'redux-saga/effects'
+
 import { getCommentsSlice, getCurrentPageSlice, setErrorSlice } from 'redux/slice/comments'
 import {
   CREATE_COMMENT,
@@ -19,8 +20,9 @@ import {
 } from 'redux/type'
 
 export function* getCommentsSaga() {
+  yield delay(200)
   try {
-    const comments = yield getCommentsAPI()
+    const comments = yield call(getCommentsAPI)
     yield put(getCommentsSlice(comments.data))
   } catch (err) {
     yield put(setErrorSlice(err))
